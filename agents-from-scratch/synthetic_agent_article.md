@@ -1,21 +1,23 @@
-# Building AI Agents From Scratch: Crafting a Dynamic NLP Data Generator 🤖
+# Building LLM Agents From Scratch: Crafting a Dynamic NLP Data Generator 🤖
 
-Ever wished you had more data for your NLP projects? Imagine having a AI helper that can learn from your existing data and create more just like it! Today, we're going to build exactly that - a basic but powerful AI agent that can generate synthetic data. And the best part? We'll do it using Python and the OpenAI API to build an agent from scratch!
+Have you ever wished you had more data for your NLP projects? Imagine having an AI helper to learn from your existing data and create more like it! Today, we will build precisely that - a basic but powerful AI agent that can generate synthetic data. And the best part? We'll build an agent from scratch using Python and the OpenAI API!
 
 ## What We're Building
 
 Think of our AI agent as a clever student who:
-1. First learns by looking at your data (Learning Phase)
-2. Then creates new, similar data (Creation Phase)
-3. Finally checks if the new data is good enough (Validation Phase)
+1. First, learn by looking at your data (Learning Phase)
+2. Then create new, similar data (Creation Phase)
+3. Finally, checks if the new data is good enough (Validation Phase)
 
-Let's break this down into simple steps and we will be following the below chart.
+Let's break this down into simple steps and follow the chart below.
 
 ![Synthetic Data Generator using LLMs](artifacts/synthetic_data_generation.png "Synthetic Data")
 
 ## The Learning Phase: Building a Smart Data Analyzer
 
-Think of training an AI agent like teaching a friend to write viral content. Just as your friend would study successful viral posts to identify winning patterns, compelling tones, and key elements, our AI agent analyzes text to understand it's characteristics.
+Think of training an LLM agent, like teaching a friend to write viral content. As your friend would study successful viral posts to identify winning patterns, compelling tones, and key elements, our AI agent analyzes text to understand its characteristics.
+
+`Setup your OpeAI APIs to run the below code.`
 
 ```python
 from collections import Counter
@@ -28,6 +30,7 @@ from openai import OpenAI
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+api_key = "" # openai api key
 
 def analyze_text_patterns_with_llm(client: OpenAI, texts: List[str], label: str) -> Dict:
     """
@@ -109,7 +112,7 @@ def analyze_class_patterns(client: OpenAI, texts: List[str], labels: List[str]) 
 
 ## The Creation Phase: Implementing the Generation Engine
 
-Now that our AI agent understands the patterns, it's time to create new data! This is like asking our friend to start writing viral posts based on what they have learnt.
+Now that our LLM agent understands the patterns, it's time to create new data! This is like asking our friend to write viral posts based on their learning.
 
 ```python
 def generate_synthetic_samples(client: OpenAI, patterns: Dict, target_label: str, num_samples: int) -> List[str]:
@@ -261,7 +264,7 @@ Let's integrate these components and test our system with a smaller dataset. Whi
 
 ```python
 # Setup OpenAI client
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+client = OpenAI(api_key=api_key)
 
 # Sample movie reviews
 sample_reviews = [
@@ -310,16 +313,16 @@ Augmented text:
 
 ## What's Next?
 
-We've just built our own LLM powered synthetic data generation agent. This is just the beginning - we can enhance it by:
+We've just built our own LLM-powered synthetic data generation agent. This is just the beginning - we can enhance it by:
 
-1. Running the complete pipeline on a real world dataset 
+1. Running the complete pipeline on a real-world dataset 
 2. Adding more analysis metrics (topic detection)
 3. Implementing different validation techniques
-4. Replace the sample examples with real world dataset
+4. Replace the sample examples with real-world dataset
 5. Implementing a production Synthetic Data generation agent by leveraging [Argilla](https://argilla.io/)
 6. Going beyond OpenAI models and experimenting with Deepsek-v3
 
-The possibilities are endless! Attaching the [jupyter notebook](synthetic_agent_from_scratch.ipynb) to playaround.
+The possibilities are endless! Attaching the [jupyter notebook](https://github.com/Praneeth16/articles/blob/main/agents-from-scratch/synthetic_agent_from_scratch.ipynb) to play around.
 
 ## Final Thoughts
 
